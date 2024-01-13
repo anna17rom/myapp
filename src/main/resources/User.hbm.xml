@@ -1,0 +1,20 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name = "org.example.User" table = "USER">
+
+        <meta attribute = "class-description">
+            This class contains the user detail.
+        </meta>
+
+        <id name="userID" type="int" column ="UserID" >
+            <generator class="native" />
+        </id>
+
+        <property name="username" type="string" column ="Username" />
+        <property name="password" type="string" column ="Password" />
+        <property name="userType" type="string" column ="UserType" />
+
+    </class>
+
+</hibernate-mapping>

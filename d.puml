@@ -1,0 +1,73 @@
+@startuml
+
+class User {
+  -userID: int
+  -username: String
+  -password: String
+  -userType: UserType
+}
+
+enum UserType {
+  Admin
+  User
+}
+
+class Category {
+  -categoryID: int
+  -categoryName: String
+  -categoryType: CategoryType
+}
+
+enum CategoryType {
+  Income
+  Expense
+}
+
+class Transaction {
+  -transactionID: int
+  -user: User
+  -category: Category
+  -amount: double
+  -description: String
+  -transactionDate: Date
+  -paymentMethod: PaymentMethod
+  -budget: boolean
+  -transactionType: TransactionType
+}
+
+enum TransactionType {
+  Income
+  Expense
+}
+
+class PaymentMethod {
+  -methodID: int
+  -methodName: String
+  -amount: double
+}
+
+class Budget {
+  -budgetID: int
+  -user: User
+  -category: Category
+  -amount: double
+  -month: int
+  -year: int
+}
+
+class UserNotification {
+  -notificationID: int
+  -user: User
+  -textOfNotification: String
+  -date: Date
+  -amount: double
+}
+
+User "1" -- "*" Transaction : owns
+Category "1" -- "*" Transaction : categorizes
+PaymentMethod "1" -- "*" Transaction : usedBy
+User "1" -- "*" Budget : sets
+Category "1" -- "*" Budget : forCategory
+User "1" -- "*" UserNotification : receives
+
+@enduml
