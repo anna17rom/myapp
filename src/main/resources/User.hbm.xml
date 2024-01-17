@@ -14,6 +14,26 @@
         <property name="username" type="string" column ="Username" />
         <property name="password" type="string" column ="Password" />
         <property name="userType" type="string" column ="UserType" />
+        <set name="wallets" inverse="true" cascade="all">
+            <key column="UserID" not-null="true" />
+            <one-to-many class="org.example.Wallet" />
+        </set>
+        <set name="expenses" inverse="true" cascade="all">
+            <key column="UserID" not-null="true" />
+            <one-to-many class="org.example.Expense" />
+        </set>
+        <set name="categoryExpenses" inverse="true" cascade="all">
+            <key column="UserID" not-null="true" />
+            <one-to-many class="org.example.CategoryExpense" />
+        </set>
+        <set name="budgets" inverse="true" cascade="all">
+            <key column="UserID" not-null="true" />
+            <one-to-many class="org.example.Budget" />
+        </set>
+        <set name="notifications" inverse="true" cascade="all">
+            <key column="UserID" not-null="true" />
+            <one-to-many class="org.example.Notification" />
+        </set>
 
     </class>
 

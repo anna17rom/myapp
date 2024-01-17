@@ -6,15 +6,29 @@
     <session-factory>
         <!-- Connection properties -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/myapp?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;useSSL=false</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/app?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;useSSL=false</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">wertolet</property>
 
         <!-- Additional properties -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.bytecode.provider">javassist</property>
+        <property name="hibernate.cache.use_second_level_cache">false</property>
+
+        <!-- Specify the location of the log4j configuration -->
+        <property name="hibernate.javax.cache.provider">org.apache.logging.log4j.jcache.Log4jCachingProvider</property>
+        <property name="hibernate.javax.cache.uri">src/log4j2.xml</property>
         <property name="hibernate.connection.allowPublicKeyRetrieval">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
         <!-- Mapping resource -->
         <mapping resource="User.hbm.xml"/>
+        <mapping resource="Wallet.hbm.xml"/>
+        <mapping resource="CategoryExpense.hbm.xml"/>
+        <mapping resource="Expense.hbm.xml"/>
+        <mapping resource="Notification.hbm.xml"/>
+        <mapping resource="Budget.hbm.xml"/>
+
+
     </session-factory>
 </hibernate-configuration>
